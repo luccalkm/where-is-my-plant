@@ -1,4 +1,5 @@
-import { Card, CardContent, Typography, Box } from '@mui/material';
+import { CardContent, Typography, Paper, useTheme, Grid, IconButton, Tooltip } from '@mui/material';
+import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 
 interface PathCardProps {
     path: {
@@ -10,24 +11,30 @@ interface PathCardProps {
 }
 
 export function PathCard({ path }: PathCardProps) {
+    const theme = useTheme();
     return (
-        <Card sx={{ width: 180, minHeight: 200, mx: 1, bgcolor: "#f6fff8", borderRadius: 4, boxShadow: 2 }}>
+        <Paper sx={{}}>
             <CardContent>
-                <Box sx={{ textAlign: 'center', mb: 2 }}>
-                    <img
-                        src={path.image || ''}
-                        alt={path.title}
-                        style={{ width: 54, height: 54, objectFit: 'contain' }}
-                        onError={e => (e.currentTarget.style.display = 'none')}
-                    />
-                </Box>
-                <Typography variant="h6" gutterBottom>
-                    {path.title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    {path.description}
-                </Typography>
+                <Grid size={12} container direction={'column'} spacing={2}>
+                    <Grid size={12} container justifyContent={'space-between'}>
+                        <Typography variant="h6" gutterBottom>
+                            {path.title}
+                        </Typography>
+                        <Tooltip title={`Explorar ideias de ${path.title}`}>
+
+                            <IconButton size="small" color="primary">
+                                <ManageSearchIcon />
+                            </IconButton>
+                        </Tooltip>
+
+                    </Grid>
+                    <Grid>
+                        <Typography variant="body2" fontWeight={"bold"} color={theme.palette.primary.main}>
+                            {path.description}
+                        </Typography>
+                    </Grid>
+                </Grid>
             </CardContent>
-        </Card>
+        </Paper>
     );
 }

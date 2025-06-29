@@ -26,43 +26,42 @@ export const Home = () => {
                         alignItems: 'center',
                         justifyContent: 'center',
                     }}>
-                        Nível {level}
+                        {level}
                     </Box>
                     <Box sx={{ flex: 1 }}>
-                        <Typography variant="body2" color="text.secondary">
-                            Próximo nível: {100 - progress} XP
+                        <Typography fontWeight={'bold'} variant="body2" color="text.secondary">
+                            Próximo nível ({level + 1}): {100 - progress}xp
                         </Typography>
                         <LinearProgress
-                            value={progress}
+                            value={40}
                             variant="determinate"
-                            color="success"
+                            color="primary"
                             sx={{ height: 10, borderRadius: 5, mt: 1 }}
+
                         />
                     </Box>
-                    <Typography sx={{ minWidth: 60, fontWeight: 500 }}>XP: {xp}</Typography>
                 </Stack>
             </Box>
 
-            <Box sx={{ mb: 3, px: 2 }}>
+            <Box sx={{ mb: 3 }}>
                 <Typography variant="h6" gutterBottom>
                     Explore caminhos:
                 </Typography>
-                <Grid sx={{ overflowX: 'auto', py: 1 }} container spacing={2} justifyContent="flex-start">
-                    
-         <Stack direction="row" spacing={2}>
-                    {paths.map((path) => (
-                        <Grid key={path.id} size={{xs: 6, sm: 4, md: 3}}>
-                            <PathCard path={path} />
-                        </Grid>
-                    ))}</Stack>
+                <Grid sx={{ overflowX: 'auto', py: 1 }} container spacing={2}>
+                    <Stack spacing={2}>
+                        {paths.map((path) => (
+                            <Grid key={path.id} size={12}>
+                                <PathCard path={path} />
+                            </Grid>
+                        ))}</Stack>
                 </Grid>
             </Box>
 
-            <Box sx={{ px: 2 }}>
+            <Box>
                 <Typography variant="h6" gutterBottom>
-                    Minhas tarefas:
+                    Tarefas diárias
                 </Typography>
-                <TasksCarousel tasks={tasks} />
+                <TasksCarousel tasks={tasks} showCompleted={false} />
             </Box>
         </Box>
     );

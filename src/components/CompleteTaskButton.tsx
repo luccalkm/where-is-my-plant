@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import { useTasksStore } from '../stores/useTasksStore';
 import { useUserStore } from '../stores/useUserStore';
 
@@ -11,8 +12,8 @@ export function CompleteTaskButton({ taskId, taskXp }: { taskId: number, taskXp:
     };
 
     return (
-        <button onClick={handleComplete}>
+        <Button variant="contained" size="small"  onClick={handleComplete}>
             Concluir
-        </button>
+        </Button>
     );
 }
