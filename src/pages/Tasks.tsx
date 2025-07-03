@@ -42,6 +42,13 @@ export const Tasks = () => {
         );
     }
 
+    const formatCategoryName = (name: string): string => {
+        return name
+            .replace(/([A-Z])/g, ' $1')       
+            .replace(/^./, (str) => str.toUpperCase())  
+            .trim();                         
+    }
+
     return (
         <Box
             maxWidth="md"
@@ -86,7 +93,7 @@ export const Tasks = () => {
                         mb={0.5}
                         sx={{ fontSize: { xs: 15, sm: 18 }, pl: 1 }}
                     >
-                        {category.charAt(0).toUpperCase() + category.slice(1)}
+                        {formatCategoryName(category)}
                     </Typography>
 
                     {themes.map((theme) => {
