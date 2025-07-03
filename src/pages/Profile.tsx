@@ -70,7 +70,7 @@ export const Profile = () => {
     };
 
     return (
-        <Box maxWidth="sm" mx="auto" display="flex" flexDirection="column" gap={2}>
+        <Box paddingBottom={"50px"} maxWidth="sm" mx="auto" display="flex" flexDirection="column" gap={2}>
             <Card sx={{ p: 3 }}>
                 <Grid container spacing={3} alignItems="center" justifyContent="center">
                     <Grid>
