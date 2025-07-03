@@ -23,6 +23,7 @@ export default function AppLayout() {
                     display: 'flex',
                     flexDirection: 'column',
                     minHeight: '100vh',
+                    paddingBottom: '50px',
                 }}
             >
                 <Box p={2}>
