@@ -11,8 +11,8 @@ export default defineConfig({
         'favicon.ico',
         'robots.txt',
         'apple-touch-icon.png',
-        'icons/pwa-192x192.png',
-        'icons/android-chrome-192x192.png'
+        'icons/android-chrome-192x192.png',
+        'icons/android-chrome-512x512.png',
       ],
       manifest: {
         name: 'Where Is My Plant',
