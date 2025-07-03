@@ -20,11 +20,11 @@ export function useFirebaseUserSync(userId: string) {
                     id: userId,
                     name: "",
                     email: "",
-                    avatarUrl: "",
+                    avatarBase64: "",
                     bio: "",
                     xp: 0,
                     tasksDone: [],
-                    tasksDaily: {},
+                    tasksDaily: {}, 
                 };
                 await setDoc(ref, initial);
                 setAll(initial);

@@ -47,7 +47,7 @@ export const Home = () => {
     const markDailyTaskDone = useUserStore(s => s.markTaskDaily);
 
     return (
-        <Box sx={{ mt: 2, mb: 8, px: { xs: 1, sm: 0 } }}>
+        <Box sx={{ mt: 2, mb: 10, px: { xs: 1, sm: 0 } }}>
             <Typography variant="h5" fontWeight={700} mb={1}>
                 Olá, {firstName}! 👋
             </Typography>

@@ -20,14 +20,19 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import IconButton from '@mui/material/IconButton';
 import { tasksCatalog } from "../data/tasksCatalog/tasksCatalog";
 import { useUserStore } from "../stores/useUserStore";
+import { useChatStore } from '../stores/useChatStore';
 import { Fragment } from "react/jsx-runtime";
+import { useNavigate } from 'react-router-dom';
 
 export const Tasks = () => {
     const theme = useTheme();
     const user = useUserStore((s) => s.user);
     const markTaskDone = useUserStore((s) => s.markTaskDone);
+    const navigate = useNavigate();
 
     if (!user) {
         return (
@@ -88,6 +93,9 @@ export const Tasks = () => {
                         const allDone = theme.tasks.every((t) =>
                             user.tasksDone?.includes(t.id)
                         );
+                        // Pega a primeira task desbloqueada (a próxima a ser feita)
+                        const firstUndoneIdx = theme.tasks.findIndex(t => !(user.tasksDone?.includes(t.id)));
+                        const unlockedTask = theme.tasks[firstUndoneIdx];
                         return (
                             <Accordion
                                 key={theme.id}
@@ -137,6 +145,20 @@ export const Tasks = () => {
                                         >
                                             {theme.name}
                                         </Typography>
+                                        {unlockedTask && (
+                                            <IconButton
+                                                size="small"
+                                                sx={{ ml: 0.5, color: '#fbc02d' }}
+                                                onClick={e => {
+                                                    e.stopPropagation();
+                                                    const question = `Estou no passo: "${unlockedTask.title}". ${unlockedTask.description}\nMe ajude com esse passo?`;
+                                                    useChatStore.getState().ask(question);
+                                                    navigate('/chat');
+                                                }}
+                                            >
+                                                <AutoAwesomeIcon fontSize="small" />
+                                            </IconButton>
+                                        )}
                                         <Chip
                                             label={`${theme.tasks.filter((t) =>
                                                 user.tasksDone?.includes(t.id)
@@ -180,7 +202,7 @@ export const Tasks = () => {
                                                     component={unlocked && !done ? "button" : "li"}
                                                     disabled={!unlocked || done}
                                                 >
-                                                    <ListItemIcon sx={{ minWidth: 32 }}>
+                                                    <ListItemIcon sx={{ minWidth: 32, display: 'flex', alignItems: 'center', gap: 0.5 }}>
                                                         {done ? (
                                                             <CheckCircleIcon
                                                                 fontSize="small"

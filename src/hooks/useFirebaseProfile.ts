@@ -19,7 +19,7 @@ export function useFirebaseProfile(userId: string) {
                     id: userId,
                     name: "",
                     email: "",
-                    avatarUrl: "",
+                    avatarBase64: "",
                     bio: "",
                     xp: 0,
                     level: 1,

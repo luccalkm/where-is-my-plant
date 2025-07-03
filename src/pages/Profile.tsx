@@ -1,11 +1,12 @@
 import React from "react";
-import { Box, Typography, Card, Avatar, Divider, Grid, TextField, Button, CircularProgress, IconButton } from "@mui/material";
+import { Box, Typography, Card, Avatar, Divider, Grid, TextField, Button, CircularProgress, IconButton, Paper } from "@mui/material";
 import { useUserStore } from "../stores/useUserStore";
 import { useFirebaseUserSync } from "../hooks/useFirebaseSync";
 import { getLevelByXp } from "../utils/primeLevel";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { MiniDailyCalendar } from "../components/MiniDailyCalendar";
+import { ProfileFeedback } from '../components/ProfileFeedback';
 
 const userId = (() => {
     let id = localStorage.getItem("userId");
@@ -25,6 +26,9 @@ export const Profile = () => {
 
     const [edited, setEdited] = React.useState(user);
     const [isDirty, setIsDirty] = React.useState(false);
+    const [feedback, setFeedback] = React.useState("");
+    const [rating, setRating] = React.useState<number | null>(null);
+    const [feedbackSent, setFeedbackSent] = React.useState(!!edited?.feedback);
 
     function handleChange(field: string, value: string) {
         setEdited((prev) => prev ? { ...prev, [field]: value } : prev);
@@ -37,6 +41,14 @@ export const Profile = () => {
             setIsDirty(false);
         }
     }
+
+    const handleFeedbackSend = (rating: number, feedback: string) => {
+        if (!edited) return;
+        const updated = { ...edited, feedback: { rating, text: feedback } };
+        setEdited(updated);
+        update({ feedback: { rating, text: feedback } });
+        setFeedbackSent(true);
+    };
 
     if (loading || !edited) {
         return <Box mt={6} textAlign="center"><CircularProgress /></Box>;
@@ -70,7 +82,7 @@ export const Profile = () => {
     };
 
     return (
-        <Box paddingBottom={"50px"} maxWidth="sm" mx="auto" display="flex" flexDirection="column" gap={2}>
+        <Box paddingBottom={"80px"} maxWidth="sm" mx="auto" display="flex" flexDirection="column" gap={2}>
             <Card sx={{ p: 3 }}>
                 <Grid container spacing={3} alignItems="center" justifyContent="center">
                     <Grid>
@@ -138,6 +150,9 @@ export const Profile = () => {
                 <Typography variant="subtitle1" fontWeight={600} mb={2}>Progresso das tarefas diárias</Typography>
                 <MiniDailyCalendar tasksDaily={edited.tasksDaily} />
             </Card>
+            {!feedbackSent && (
+                <ProfileFeedback onSend={handleFeedbackSend} />
+            )}
             <Button variant="contained" size="small" sx={{ mt: 1 }} onClick={handleSave} disabled={!isDirty}>
                 Salvar
             </Button>
