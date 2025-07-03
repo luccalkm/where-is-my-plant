@@ -1,9 +1,9 @@
-
 import React from "react";
 import { Box, Typography, Card, Avatar, Divider, Grid, TextField, Button, CircularProgress } from "@mui/material";
 import { useUserStore } from "../stores/useUserStore";
 import { useFirebaseUserSync } from "../hooks/useFirebaseSync";
 import { getLevelByXp } from "../utils/primeLevel";
+import { MiniDailyCalendar } from "../components/MiniDailyCalendar";
 
 const userId = (() => {
     let id = localStorage.getItem("userId");
@@ -75,6 +75,10 @@ export const Profile = () => {
                     onChange={e => handleChange("bio", e.target.value)}
                     fullWidth sx={{ mt: 1 }}
                 />
+            </Card>
+            <Card sx={{ p: 3 }}>
+                <Typography variant="subtitle1" fontWeight={600} mb={2}>Progresso das tarefas diárias</Typography>
+                <MiniDailyCalendar tasksDaily={edited.tasksDaily} />
             </Card>
             <Button variant="contained" size="small" sx={{ mt: 1 }} onClick={handleSave} disabled={!isDirty}>
                 Salvar

@@ -2,7 +2,6 @@ import { Box, Typography, Stack, LinearProgress, Paper, Avatar } from '@mui/mate
 import { useUserStore } from '../stores/useUserStore';
 import { tasksCatalog } from '../data/tasksCatalog/tasksCatalog';
 import { getLevelByXp } from '../utils/primeLevel';
-import { useNavigate } from 'react-router-dom';
 
 export const Home = () => {
     const user = useUserStore(s => s.user);
@@ -35,6 +34,17 @@ export const Home = () => {
             }
         });
     });
+
+    const dailyTasks = [
+        { id: 'water', title: 'Regar plantinhas' },
+        { id: 'learn', title: 'Aprender nova plantinha' },
+        { id: 'check_soil', title: 'Verificar umidade do solo' },
+        { id: 'share_photo', title: 'Compartilhar foto da planta' },
+    ];
+
+    const today = new Date().toISOString().slice(0, 10);
+    const dailyDone = user.tasksDaily?.[today] || [];
+    const markDailyTaskDone = useUserStore(s => s.markTaskDaily);
 
     return (
         <Box sx={{ mt: 2, mb: 8, px: { xs: 1, sm: 0 } }}>
@@ -80,6 +90,39 @@ export const Home = () => {
                         ))}
                     </Stack>
                 )}
+            </Paper>
+
+            <Paper elevation={1} sx={{ p: 2, mb: 3, borderRadius: 3 }}>
+                <Typography fontWeight={600} mb={1}>
+                    Tarefas diárias <Typography component="span" color="text.secondary" fontWeight={400} fontSize={14}>({today.split('-').reverse().join('/')})</Typography>
+                </Typography>
+                <Stack spacing={1}>
+                    {dailyTasks.map(task => {
+                        const done = dailyDone.includes(task.id);
+                        return (
+                            <Box
+                                key={task.id}
+                                sx={{
+                                    p: 1,
+                                    borderRadius: 2,
+                                    bgcolor: done ? 'success.lighter' : 'background.default',
+                                    boxShadow: 0,
+                                    border: '1px solid #f0f0f0',
+                                    opacity: done ? 0.6 : 1,
+                                    cursor: done ? 'default' : 'pointer',
+                                }}
+                                onClick={() => { if (!done) markDailyTaskDone(task.id, today); }}
+                            >
+                                <Typography fontWeight={500} fontSize={15} sx={{ textDecoration: done ? 'line-through' : undefined }}>
+                                    {task.title}
+                                </Typography>
+                                <Typography variant="caption" color="primary.main" fontWeight={600}>
+                                    +10 XP
+                                </Typography>
+                            </Box>
+                        );
+                    })}
+                </Stack>
             </Paper>
         </Box>
     );

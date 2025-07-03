@@ -1,5 +1,5 @@
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { Container, AppBar, Toolbar, Typography, Box, Grid } from '@mui/material';
+import { Box } from '@mui/material';
 import BottomNav from './BottomNav';
 
 const NAV = [
@@ -23,6 +23,7 @@ export default function AppLayout() {
                     display: 'flex',
                     flexDirection: 'column',
                     minHeight: '100vh',
+                    paddingBottom: "36px",
                 }}
             >
                 <Box p={2}>

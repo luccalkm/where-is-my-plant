@@ -153,26 +153,31 @@ export const Tasks = () => {
                                 </AccordionSummary>
                                 <AccordionDetails sx={{ pt: 1, pb: 0.5 }}>
                                     <List dense sx={{ width: "100%", px: 0 }}>
-                                        {theme.tasks.map((task) => {
+                                        {theme.tasks.map((task, idx) => {
                                             const done = user.tasksDone?.includes(task.id) ?? false;
+                                            const firstUndoneIdx = theme.tasks.findIndex(t => !(user.tasksDone?.includes(t.id)));
+                                            const unlocked = done || idx === firstUndoneIdx;
                                             return (
                                                 <ListItem
                                                     key={task.id}
                                                     sx={{
                                                         bgcolor: done
                                                             ? "success.lighter"
-                                                            : "#fff",
+                                                            : unlocked
+                                                                ? "#fff"
+                                                                : "grey.100",
                                                         borderRadius: 2,
                                                         mb: 1,
                                                         px: 1,
                                                         minHeight: 48,
                                                         transition: "background 0.2s",
+                                                        opacity: unlocked ? 1 : 0.6,
                                                     }}
                                                     onClick={() => {
-                                                        if (!done) markTaskDone(task.id);
+                                                        if (unlocked && !done) markTaskDone(task.id);
                                                     }}
-                                                    component={!done ? "button" : "li"}
-                                                    disabled={done}
+                                                    component={unlocked && !done ? "button" : "li"}
+                                                    disabled={!unlocked || done}
                                                 >
                                                     <ListItemIcon sx={{ minWidth: 32 }}>
                                                         {done ? (
@@ -180,10 +185,15 @@ export const Tasks = () => {
                                                                 fontSize="small"
                                                                 color="success"
                                                             />
-                                                        ) : (
+                                                        ) : unlocked ? (
                                                             <RadioButtonUncheckedIcon
                                                                 fontSize="small"
                                                                 color="action"
+                                                            />
+                                                        ) : (
+                                                            <RadioButtonUncheckedIcon
+                                                                fontSize="small"
+                                                                sx={{ color: 'grey.400' }}
                                                             />
                                                         )}
                                                     </ListItemIcon>
@@ -195,6 +205,7 @@ export const Tasks = () => {
                                                                     fontSize: { xs: 15, sm: 16 },
                                                                     fontWeight: 500,
                                                                     lineHeight: 1.25,
+                                                                    color: unlocked ? undefined : 'grey.500',
                                                                 }}
                                                             >
                                                                 {task.title}
@@ -206,7 +217,7 @@ export const Tasks = () => {
                                                                     component="span"
                                                                     sx={{
                                                                         fontSize: { xs: 12, sm: 13 },
-                                                                        color: "text.secondary",
+                                                                        color: unlocked ? "text.secondary" : 'grey.400',
                                                                         whiteSpace: "pre-line",
                                                                         display: "block",
                                                                     }}
@@ -215,10 +226,9 @@ export const Tasks = () => {
                                                                 </Typography>
                                                                 <Box textAlign={'right'} mt={0.5}>
                                                                     <Chip
-
                                                                         label={`+${task.xp} XP`}
                                                                         size="small"
-                                                                        color={done ? "success" : "primary"}
+                                                                        color={done ? "success" : unlocked ? "primary" : "default"}
                                                                         sx={{ fontWeight: 600, fontSize: { xs: 12, sm: 13 } }}
                                                                     />
                                                                 </Box>

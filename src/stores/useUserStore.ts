@@ -72,7 +72,11 @@ export const useUserStore = create<UserState>()(
                 const tasksForDay = prev.tasksDaily?.[today] || [];
                 if (tasksForDay.includes(taskId)) return;
                 const updatedDaily = { ...prev.tasksDaily, [today]: [...tasksForDay, taskId] };
-                const updated = { ...prev, tasksDaily: updatedDaily };
+                const updated = { 
+                    ...prev, 
+                    tasksDaily: updatedDaily,
+                    xp: prev.xp + 10
+                };
                 set({ user: updated });
                 syncUserToFirebase(updated);
             },
