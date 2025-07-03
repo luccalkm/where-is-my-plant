@@ -23,7 +23,10 @@ export const useUserStore = create<UserState>()(
             user: null,
             loading: true,
 
-            setAll: (profile) => set({ user: profile }),
+            setAll: (profile) => {
+                const prev = get().user;
+                set({ user: prev ? { ...prev, ...profile } : profile });
+            },
             setLoading: (val) => set({ loading: val }),
 
             update: (partial) => {

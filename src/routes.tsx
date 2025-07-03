@@ -5,12 +5,14 @@ import { Profile } from './pages/Profile';
 import { Tasks } from './pages/Tasks';
 import { Home } from './pages/Home';
 import Chat from './pages/Chat';
+import Login from './pages/Login';
 
 export const router = createBrowserRouter([
     {
         element: <AppLayout />,
         children: [
             { path: '/', element: <Home /> },
+            { path: '/login', element: <Login /> },
             { path: '/tasks', element: <Tasks /> },
             { path: '/calendar', element: <Calendar /> },
             { path: '/profile', element: <Profile /> },

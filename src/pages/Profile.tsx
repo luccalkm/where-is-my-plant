@@ -1,24 +1,13 @@
 import React from "react";
 import { Box, Typography, Card, Avatar, Divider, Grid, TextField, Button, CircularProgress, IconButton, Paper } from "@mui/material";
 import { useUserStore } from "../stores/useUserStore";
-import { useFirebaseUserSync } from "../hooks/useFirebaseSync";
 import { getLevelByXp } from "../utils/primeLevel";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { MiniDailyCalendar } from "../components/MiniDailyCalendar";
 import { ProfileFeedback } from '../components/ProfileFeedback';
 
-const userId = (() => {
-    let id = localStorage.getItem("userId");
-    if (!id) {
-        id = crypto.randomUUID();
-        localStorage.setItem("userId", id);
-    }
-    return id;
-})();
-
 export const Profile = () => {
-    useFirebaseUserSync(userId);
     const { level } = getLevelByXp(useUserStore(s => s.user?.xp ?? 0));
     const user = useUserStore(s => s.user);
     const loading = useUserStore(s => s.loading);
@@ -26,8 +15,6 @@ export const Profile = () => {
 
     const [edited, setEdited] = React.useState(user);
     const [isDirty, setIsDirty] = React.useState(false);
-    const [feedback, setFeedback] = React.useState("");
-    const [rating, setRating] = React.useState<number | null>(null);
     const [feedbackSent, setFeedbackSent] = React.useState(!!edited?.feedback);
 
     function handleChange(field: string, value: string) {
