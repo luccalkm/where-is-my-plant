@@ -466,4 +466,186 @@ export const tasksCatalog: TasksCatalog = {
             ],
         },
     ],
+    plantasFaciais: [
+        {
+            id: 'suculenta',
+            name: 'Suculenta',
+            tasks: [
+                {
+                    id: 'suculenta-1',
+                    title: 'Escolha um vaso com boa drenagem',
+                    description: 'Use vaso com furos para evitar acúmulo de água.',
+                    xp: 7,
+                },
+                {
+                    id: 'suculenta-2',
+                    title: 'Use substrato para suculentas',
+                    description: 'Prefira substrato arenoso e bem drenado.',
+                    xp: 8,
+                },
+                {
+                    id: 'suculenta-3',
+                    title: 'Plante a muda ou corte',
+                    description: 'Coloque a muda no vaso, sem enterrar muito.',
+                    xp: 8,
+                },
+                {
+                    id: 'suculenta-4',
+                    title: 'Regue moderadamente',
+                    description: 'Regue somente quando o solo estiver seco, evitando encharcar.',
+                    xp: 7,
+                },
+                {
+                    id: 'suculenta-5',
+                    title: 'Deixe em local com luz indireta',
+                    description: 'Evite sol forte direto para não queimar as folhas.',
+                    xp: 7,
+                },
+            ],
+        },
+        {
+            id: 'cacto',
+            name: 'Cacto',
+            tasks: [
+                {
+                    id: 'cacto-1',
+                    title: 'Escolha vaso pequeno com boa drenagem',
+                    description: 'Vasos de cerâmica com furos são ideais.',
+                    xp: 7,
+                },
+                {
+                    id: 'cacto-2',
+                    title: 'Use substrato para cactos',
+                    description: 'Substrato arenoso e com boa drenagem para evitar apodrecimento.',
+                    xp: 8,
+                },
+                {
+                    id: 'cacto-3',
+                    title: 'Plante o cacto com cuidado',
+                    description: 'Use luvas para evitar espinhos, e plante a muda cuidadosamente.',
+                    xp: 9,
+                },
+                {
+                    id: 'cacto-4',
+                    title: 'Regue pouco',
+                    description: 'Regue a cada 15 a 20 dias, deixando o solo secar completamente entre regas.',
+                    xp: 7,
+                },
+                {
+                    id: 'cacto-5',
+                    title: 'Coloque em local com bastante luz solar',
+                    description: 'Cactos precisam de sol direto para crescer saudáveis.',
+                    xp: 7,
+                },
+            ],
+        },
+        {
+            id: 'jiboia',
+            name: 'Jiboia',
+            tasks: [
+                {
+                    id: 'jiboia-1',
+                    title: 'Escolha vaso grande e leve',
+                    description: 'Prefira vasos com furos para drenagem adequada.',
+                    xp: 7,
+                },
+                {
+                    id: 'jiboia-2',
+                    title: 'Use substrato rico e bem drenado',
+                    description: 'Misture terra vegetal com perlita ou areia grossa.',
+                    xp: 8,
+                },
+                {
+                    id: 'jiboia-3',
+                    title: 'Plante a muda em posição firme',
+                    description: 'Enterre a base da muda e apoie para crescer pendente.',
+                    xp: 8,
+                },
+                {
+                    id: 'jiboia-4',
+                    title: 'Regue regularmente, mantendo o solo úmido',
+                    description: 'Evite encharcar para não apodrecer raízes.',
+                    xp: 7,
+                },
+                {
+                    id: 'jiboia-5',
+                    title: 'Coloque em local com sombra parcial',
+                    description: 'Jiboias não gostam de sol direto forte.',
+                    xp: 7,
+                },
+            ],
+        },
+        {
+            id: 'zamioculca',
+            name: 'Zamioculca',
+            tasks: [
+                {
+                    id: 'zamioculca-1',
+                    title: 'Escolha vaso com boa drenagem',
+                    description: 'Vaso médio com furos para evitar acúmulo de água.',
+                    xp: 7,
+                },
+                {
+                    id: 'zamioculca-2',
+                    title: 'Use substrato leve e rico em matéria orgânica',
+                    description: 'Misture terra vegetal com húmus ou composto orgânico.',
+                    xp: 8,
+                },
+                {
+                    id: 'zamioculca-3',
+                    title: 'Plante a muda com cuidado',
+                    description: 'Enterre a base da muda no solo, firmando levemente.',
+                    xp: 8,
+                },
+                {
+                    id: 'zamioculca-4',
+                    title: 'Regue moderadamente',
+                    description: 'Solo deve secar entre as regas, evitando encharcar.',
+                    xp: 7,
+                },
+                {
+                    id: 'zamioculca-5',
+                    title: 'Deixe em local com sombra ou luz indireta',
+                    description: 'Não suporta sol direto forte.',
+                    xp: 7,
+                },
+            ],
+        },
+        {
+            id: 'babosa',
+            name: 'Babosa (Aloe Vera)',
+            tasks: [
+                {
+                    id: 'babosa-1',
+                    title: 'Escolha vaso com boa drenagem',
+                    description: 'Vasos com furos são essenciais para evitar excesso de água.',
+                    xp: 7,
+                },
+                {
+                    id: 'babosa-2',
+                    title: 'Use substrato para cactos ou suculentas',
+                    description: 'Mistura arenosa para garantir drenagem rápida.',
+                    xp: 8,
+                },
+                {
+                    id: 'babosa-3',
+                    title: 'Plante a muda com a base firme no solo',
+                    description: 'Enterre levemente a base, deixando as folhas para fora.',
+                    xp: 8,
+                },
+                {
+                    id: 'babosa-4',
+                    title: 'Regue com moderação',
+                    description: 'Regue somente quando o solo estiver seco, evitando excesso de água.',
+                    xp: 7,
+                },
+                {
+                    id: 'babosa-5',
+                    title: 'Coloque em local com luz indireta ou sombra parcial',
+                    description: 'Evite sol forte direto para não queimar as folhas.',
+                    xp: 7,
+                },
+            ],
+        },
+    ],
 };
