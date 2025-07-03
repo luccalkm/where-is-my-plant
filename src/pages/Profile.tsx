@@ -5,7 +5,6 @@ import { getLevelByXp } from "../utils/primeLevel";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { MiniDailyCalendar } from "../components/MiniDailyCalendar";
-import { ProfileFeedback } from '../components/ProfileFeedback';
 
 export const Profile = () => {
     const { level } = getLevelByXp(useUserStore(s => s.user?.xp ?? 0));
@@ -15,7 +14,6 @@ export const Profile = () => {
 
     const [edited, setEdited] = React.useState(user);
     const [isDirty, setIsDirty] = React.useState(false);
-    const [feedbackSent, setFeedbackSent] = React.useState(!!edited?.feedback);
 
     function handleChange(field: string, value: string) {
         setEdited((prev) => prev ? { ...prev, [field]: value } : prev);
@@ -27,18 +25,6 @@ export const Profile = () => {
             update(edited);
             setIsDirty(false);
         }
-    }
-
-    const handleFeedbackSend = (rating: number, feedback: string) => {
-        if (!edited) return;
-        const updated = { ...edited, feedback: { rating, text: feedback } };
-        setEdited(updated);
-        update({ feedback: { rating, text: feedback } });
-        setFeedbackSent(true);
-    };
-
-    if (loading || !edited) {
-        return <Box mt={6} textAlign="center"><CircularProgress /></Box>;
     }
 
     const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,6 +53,10 @@ export const Profile = () => {
             setIsDirty(true);
         }
     };
+
+    if (loading || !edited) {
+        return <Box mt={6} textAlign="center"><CircularProgress /></Box>;
+    }
 
     return (
         <Box paddingBottom={"80px"} maxWidth="sm" mx="auto" display="flex" flexDirection="column" gap={2}>
@@ -137,9 +127,14 @@ export const Profile = () => {
                 <Typography variant="subtitle1" fontWeight={600} mb={2}>Progresso das tarefas diárias</Typography>
                 <MiniDailyCalendar tasksDaily={edited.tasksDaily} />
             </Card>
-            {!feedbackSent && (
-                <ProfileFeedback onSend={handleFeedbackSend} />
-            )}
+            <Button
+                variant="outlined"
+                color="primary"
+                sx={{ mt: 2 }}
+                onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSfDoyN99a7sHs3ItgCQurApCwOnoXSvzYJMm52XRKU-za0g0A/viewform', '_blank')}
+            >
+                Enviar feedback
+            </Button>
             <Button variant="contained" size="small" sx={{ mt: 1 }} onClick={handleSave} disabled={!isDirty}>
                 Salvar
             </Button>

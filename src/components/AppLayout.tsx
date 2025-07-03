@@ -1,8 +1,9 @@
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import BottomNav from './BottomNav';
+import YardIcon from '@mui/icons-material/Yard';
 
 const NAV = [
     { label: 'Home', path: '/', index: 0 },
@@ -58,8 +59,16 @@ export default function AppLayout() {
             >
                 <Box p={2}>
                     {isAuthenticated && !isLoginPage && (
-                        <Box display="flex" justifyContent="flex-end" mb={1}>
-                            <button
+                        <Box display="flex" justifyContent="flex-end" mb={1} gap={2}>
+                            <Button
+                                variant="outlined"
+                                color="primary"
+                                onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSfDoyN99a7sHs3ItgCQurApCwOnoXSvzYJMm52XRKU-za0g0A/viewform', '_blank')}
+                                sx={{ fontWeight: 700, fontSize: 15, borderRadius: 20, padding: '7px 22px', textTransform: 'none' }}
+                            >
+                                Avaliar Aplicativo
+                            </Button>
+                            <Button
                                 onClick={handleLogout}
                                 style={{
                                     background: 'linear-gradient(90deg, #43a047 0%, #66bb6a 100%)',
@@ -78,7 +87,7 @@ export default function AppLayout() {
                                 onMouseOut={e => (e.currentTarget.style.background = 'linear-gradient(90deg, #43a047 0%, #66bb6a 100%)')}
                             >
                                 Sair
-                            </button>
+                            </Button>
                         </Box>
                     )}
                     {(isAuthenticated || isLoginPage) && <Outlet />}
