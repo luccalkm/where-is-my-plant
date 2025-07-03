@@ -47,15 +47,23 @@ export const Home = () => {
     const markDailyTaskDone = useUserStore(s => s.markTaskDaily);
 
     return (
-        <Box sx={{ mt: 2, mb: 10, px: { xs: 1, sm: 0 } }}>
-            <Typography variant="h5" fontWeight={700} mb={1}>
+        <Box
+            sx={{
+                mt: 2,
+                mb: 10,
+                px: { xs: 1, sm: 0 },
+                maxWidth: { xs: '100%', md: 500 },
+                mx: { xs: 0, md: 'auto' },
+            }}
+        >
+            <Typography variant="h5" fontWeight={700} mb={1} textAlign={{ xs: 'left', md: 'center' }}>
                 Olá, {firstName}! 👋
             </Typography>
-            <Typography color="text.secondary" mb={3}>
+            <Typography color="text.secondary" mb={3} textAlign={{ xs: 'left', md: 'center' }}>
                 Pronto para cultivar novos hábitos hoje?
             </Typography>
 
-            <Paper elevation={2} sx={{ p: 2, mb: 3, borderRadius: 3 }}>
+            <Paper elevation={2} sx={{ p: { xs: 2, md: 3 }, mb: 3, borderRadius: 3, maxWidth: 600, mx: 'auto' }}>
                 <Stack direction="row" alignItems="center" spacing={2}>
                     <Avatar sx={{ width: 56, height: 56, bgcolor: 'primary.main', color: '#fff', fontWeight: 700, fontSize: 28 }}>
                         {level}
@@ -72,12 +80,12 @@ export const Home = () => {
                 </Stack>
             </Paper>
 
-            <Paper elevation={1} sx={{ p: 2, mb: 3, borderRadius: 3 }}>
-                <Typography fontWeight={600} mb={1}>
+            <Paper elevation={1} sx={{ p: { xs: 2, md: 3 }, mb: 3, borderRadius: 3, maxWidth: 600, mx: 'auto' }}>
+                <Typography fontWeight={600} mb={1} textAlign={{ xs: 'left', md: 'center' }}>
                     Suas próximas tarefas
                 </Typography>
                 {nextTasks.length === 0 ? (
-                    <Typography color="text.secondary">Você concluiu todas as tarefas! 🎉</Typography>
+                    <Typography color="text.secondary" textAlign={{ xs: 'left', md: 'center' }}>Você concluiu todas as tarefas! 🎉</Typography>
                 ) : (
                     <Stack spacing={1}>
                         {nextTasks.map((task) => (
@@ -92,8 +100,8 @@ export const Home = () => {
                 )}
             </Paper>
 
-            <Paper elevation={1} sx={{ p: 2, mb: 3, borderRadius: 3 }}>
-                <Typography fontWeight={600} mb={1}>
+            <Paper elevation={1} sx={{ p: { xs: 2, md: 3 }, mb: 3, borderRadius: 3, maxWidth: 600, mx: 'auto' }}>
+                <Typography fontWeight={600} mb={1} textAlign={{ xs: 'left', md: 'center' }}>
                     Tarefas diárias <Typography component="span" color="text.secondary" fontWeight={400} fontSize={14}>({today.split('-').reverse().join('/')})</Typography>
                 </Typography>
                 <Stack spacing={1}>
@@ -110,6 +118,8 @@ export const Home = () => {
                                     border: '1px solid #f0f0f0',
                                     opacity: done ? 0.6 : 1,
                                     cursor: done ? 'default' : 'pointer',
+                                    maxWidth: { xs: '100%', md: 400 },
+                                    mx: { xs: 0, md: 'auto' },
                                 }}
                                 onClick={() => { if (!done) markDailyTaskDone(task.id, today); }}
                             >
