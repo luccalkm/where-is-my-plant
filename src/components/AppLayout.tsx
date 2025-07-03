@@ -41,10 +41,8 @@ export default function AppLayout() {
         });
     };
 
-    // Enquanto verifica autenticação, não renderiza nada
     if (!authChecked) return null;
 
-    // Esconde BottomNav e conteúdo se não autenticado ou na página de login
     const isLoginPage = location.pathname === '/login';
     const showBottomNav = isAuthenticated && !isLoginPage;
 
@@ -64,15 +62,22 @@ export default function AppLayout() {
                             <button
                                 onClick={handleLogout}
                                 style={{
-                                    background: '#eee',
+                                    background: 'linear-gradient(90deg, #43a047 0%, #66bb6a 100%)',
+                                    color: '#fff',
                                     border: 'none',
-                                    borderRadius: 6,
-                                    padding: '6px 16px',
+                                    borderRadius: 20,
+                                    padding: '7px 22px',
                                     cursor: 'pointer',
-                                    fontWeight: 600
+                                    fontWeight: 700,
+                                    fontSize: 15,
+                                    boxShadow: '0 2px 8px 0 rgba(67,160,71,0.10)',
+                                    transition: 'background 0.2s',
+                                    outline: 'none',
                                 }}
+                                onMouseOver={e => (e.currentTarget.style.background = 'linear-gradient(90deg, #388e3c 0%, #43a047 100%)')}
+                                onMouseOut={e => (e.currentTarget.style.background = 'linear-gradient(90deg, #43a047 0%, #66bb6a 100%)')}
                             >
-                                Logout
+                                Sair
                             </button>
                         </Box>
                     )}

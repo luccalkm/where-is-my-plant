@@ -67,7 +67,7 @@ export const Home = () => {
                         <Typography variant="body2" color="text.secondary">
                             Próximo nível ({level + 1}): {required - progress}xp
                         </Typography>
-                        <LinearProgress value={progress} variant="determinate" color="primary" sx={{ height: 10, borderRadius: 5, mt: 1 }} />
+                        <LinearProgress value={required > 0 ? (progress / required) * 100 : 0} variant="determinate" color="primary" sx={{ height: 10, borderRadius: 5, mt: 1 }} />
                     </Box>
                 </Stack>
             </Paper>

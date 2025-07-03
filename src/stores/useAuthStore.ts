@@ -23,11 +23,9 @@ export const useAuthStore = create<AuthState>((set, get) => {
         const auth = getAuth();
         try {
             const userCred = await signInWithEmailAndPassword(auth, email, password);
-            // Busca o perfil do usuário no Firestore
             const userDoc = await getDoc(doc(db, 'users', userCred.user.uid));
             if (userDoc.exists()) {
                 const data = userDoc.data();
-                // Garante tipagem correta para UserProfile
                 const userProfile = {
                     id: data.id,
                     name: data.name,
@@ -73,7 +71,6 @@ export const useAuthStore = create<AuthState>((set, get) => {
                 tasksDaily: {},
             };
             await setDoc(doc(db, 'users', userCred.user.uid), userProfile);
-            // Após registrar, faz login para garantir lógica unificada
             const loginResult = await get().login(email, password);
             set({ loading: false });
             return loginResult;
