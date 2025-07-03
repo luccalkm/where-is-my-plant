@@ -13,7 +13,7 @@ interface ChatState {
     clear: () => void;
 }
 
-export const useChatStore = create<ChatState>((set, get) => ({
+export const useChatStore = create<ChatState>((set) => ({
     messages: [],
     loading: false,
     ask: async (question) => {

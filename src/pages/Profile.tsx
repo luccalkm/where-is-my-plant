@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Card, Avatar, Divider, Grid, TextField, Button, CircularProgress, IconButton, Paper } from "@mui/material";
+import { Box, Typography, Card, Avatar, Divider, Grid, TextField, Button, CircularProgress, IconButton } from "@mui/material";
 import { useUserStore } from "../stores/useUserStore";
 import { getLevelByXp } from "../utils/primeLevel";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";

@@ -93,7 +93,6 @@ export const Tasks = () => {
                         const allDone = theme.tasks.every((t) =>
                             user.tasksDone?.includes(t.id)
                         );
-                        // Pega a primeira task desbloqueada (a próxima a ser feita)
                         const firstUndoneIdx = theme.tasks.findIndex(t => !(user.tasksDone?.includes(t.id)));
                         const unlockedTask = theme.tasks[firstUndoneIdx];
                         return (
