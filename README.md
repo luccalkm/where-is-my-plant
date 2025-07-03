@@ -1,69 +1,61 @@
-# React + TypeScript + Vite
+# 🌱 Cadê Minha Planta?!
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Um aplicativo gamificado para ajudar você a criar e manter hábitos saudáveis de cuidado com plantas, desenvolvido em React + Vite + Firebase.
 
-Currently, two official plugins are available:
+## ✨ Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Cadastro e login de usuários
+- Sistema de níveis e XP por tarefas concluídas
+- Tarefas diárias e catálogo de desafios
+- Progresso visual com barra de XP
+- Perfil personalizável com foto
+- Feedback do usuário
+- Interface responsiva e amigável para mobile
+- Navegação por abas (Home, Tarefas, Chat, Perfil)
 
-## Expanding the ESLint configuration
+## 🚀 Tecnologias Utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React
+- Vite
+- TypeScript
+- Firebase Auth & Firestore
+- Material UI (MUI)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📲 Como rodar o projeto
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+1. **Clone o repositório:**
+   ```bash
+   git clone <url-do-repo>
+   cd where-is-my-plant
+   ```
+2. **Instale as dependências:**
+   ```bash
+   npm install
+   ```
+3. **Configure o Firebase:**
+   - Crie um projeto no [Firebase Console](https://console.firebase.google.com/)
+   - Copie as credenciais para o arquivo `src/firebase.ts`
+4. **Inicie o app:**
+   ```bash
+   npm run dev
+   ```
+5. **Acesse:**
+   Abra [http://localhost:5173](http://localhost:5173) no navegador.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🛡️ Segurança
+- As regras do Firestore devem ser ajustadas para produção. Veja sugestões no código ou peça ajuda!
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 💡 Contribua
+Pull requests são bem-vindos! Sinta-se à vontade para propor melhorias, novas features ou reportar bugs.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📸 Screenshots
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| Login Mobile | Home Gamificada |
+|-------------|-----------------|
+| ![Login](./public/login-preview.png) | ![Home](./public/home-preview.png) |
+
+## 🪴 Feito com carinho para quem ama plantas!
+
+---
+
+> "Cadê minha planta?!" — Cultive hábitos, colha evolução.
