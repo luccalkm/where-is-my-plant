@@ -35,8 +35,8 @@ export default function BottomNav({
                 boxShadow: '0px 4px 24px rgba(80, 176, 96, 0.15)',
                 zIndex: 10,
                 px: 1,
+                border: `1px solid ${theme.palette.divider}`,
             }}
-            elevation={0}
         >
             <Box sx={{ position: 'relative', width: '100%', height: 64 }}>
                 <Box

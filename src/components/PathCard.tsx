@@ -21,7 +21,6 @@ export function PathCard({ path }: PathCardProps) {
                             {path.title}
                         </Typography>
                         <Tooltip title={`Explorar ideias de ${path.title}`}>
-
                             <IconButton size="small" color="primary">
                                 <ManageSearchIcon />
                             </IconButton>
