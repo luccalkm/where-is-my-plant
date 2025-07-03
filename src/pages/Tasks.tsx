@@ -22,6 +22,7 @@ import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import { tasksCatalog } from "../data/tasksCatalog/tasksCatalog";
 import { useUserStore } from "../stores/useUserStore";
+import { Fragment } from "react/jsx-runtime";
 
 export const Tasks = () => {
     const theme = useTheme();
@@ -212,7 +213,7 @@ export const Tasks = () => {
                                                             </Typography>
                                                         }
                                                         secondary={
-                                                            <>
+                                                            <Fragment>
                                                                 <Typography
                                                                     component="span"
                                                                     sx={{
@@ -232,8 +233,7 @@ export const Tasks = () => {
                                                                         sx={{ fontWeight: 600, fontSize: { xs: 12, sm: 13 } }}
                                                                     />
                                                                 </Box>
-
-                                                            </>
+                                                            </Fragment>
                                                         }
                                                     />
                                                 </ListItem>
