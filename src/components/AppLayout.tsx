@@ -5,7 +5,7 @@ import BottomNav from './BottomNav';
 const NAV = [
     { label: 'Home', path: '/', index: 0 },
     { label: 'Tasks', path: '/tasks', index: 1 },
-    { label: 'Calendar', path: '/calendar', index: 2 },
+    { label: 'Chat', path: '/chat', index: 2 },
     { label: 'Profile', path: '/profile', index: 3 },
 ];
 

@@ -1,14 +1,14 @@
 import { BottomNavigation, Paper, useTheme, Box, BottomNavigationAction } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import ListAltIcon from '@mui/icons-material/ListAlt';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PersonIcon from '@mui/icons-material/Person';
 import { motion } from 'framer-motion';
+import ChatIcon from '@mui/icons-material/Chat';
 
 const NAV_ITEMS = [
     { label: 'Home', icon: <HomeIcon /> },
     { label: 'Tasks', icon: <ListAltIcon /> },
-    { label: 'Calendar', icon: <CalendarMonthIcon /> },
+    { label: 'Chat', icon: <ChatIcon /> },
     { label: 'Profile', icon: <PersonIcon /> },
 ];
 
