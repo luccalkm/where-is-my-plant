@@ -3,7 +3,6 @@ import { Box, Button } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import BottomNav from './BottomNav';
-import YardIcon from '@mui/icons-material/Yard';
 
 const NAV = [
     { label: 'Home', path: '/', index: 0 },
