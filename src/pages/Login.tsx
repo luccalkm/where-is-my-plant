@@ -91,7 +91,7 @@ export default function Login() {
               sx={{ fontWeight: 700, borderRadius: 2, bgcolor: '#43a047', ':hover': { bgcolor: '#388e3c' }, mt: 1, mb: 1 }}
               disabled={loading}
             >
-              Entrar
+              {loading ? <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><span className="MuiCircularProgress-root MuiCircularProgress-colorInherit" style={{ width: 20, height: 20, marginRight: 8 }}><svg viewBox="22 22 44 44" style={{ width: '100%', height: '100%' }}><circle className="MuiCircularProgress-circle" cx="44" cy="44" r="20.2" fill="none" strokeWidth="3.6" strokeMiterlimit="20" /></svg></span>Entrando...</span> : 'Entrar'}
             </Button>
           </form>
         ) : (
@@ -132,7 +132,7 @@ export default function Login() {
               sx={{ fontWeight: 700, borderRadius: 2, bgcolor: '#43a047', ':hover': { bgcolor: '#388e3c' }, mt: 1, mb: 1 }}
               disabled={loading}
             >
-              Registrar
+              {loading ? <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><span className="MuiCircularProgress-root MuiCircularProgress-colorInherit" style={{ width: 20, height: 20, marginRight: 8 }}><svg viewBox="22 22 44 44" style={{ width: '100%', height: '100%' }}><circle className="MuiCircularProgress-circle" cx="44" cy="44" r="20.2" fill="none" strokeWidth="3.6" strokeMiterlimit="20" /></svg></span>Registrando...</span> : 'Registrar'}
             </Button>
           </form>
         )}
